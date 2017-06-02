@@ -28,7 +28,7 @@ The last thing I need now is the optic disc class separated from the rest of the
 
 ![Optic region](optic.png)
 
-The next step is to mask the above obtained results with the original image to achieve the overall effect. Following is the output of masking:
+The next step is to mask the above obtained results with the original image to achieve the overall effect. Following is the output of the masking:
 
 ![Final Masked Image](both.png)
 

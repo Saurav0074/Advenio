@@ -21,11 +21,11 @@ The output of applying a naive watershed algorithm to the image:
 ### Final approach : Watershed along with color-space conversion 
 [colorSpace_with_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/colorSpace_with_watershed.py)
 
-Now, the foremost task is to detect the Atrophy class region. For this purpose, a color-space conversion of the orginial image from RGB to L*a*b* is applied, which shows the Atrophy region being clearly recognised by varying the values of the a-channel. Following is the output with the color range set as `[10, 10, 0] - [185, 146, 255]` (in order to discard the rest of the color regions of the image; the range is obtained by manual tweaking of the values):
+Now, the foremost task is to detect the Atrophy class region. For this purpose, a color-space conversion of the orginial image from RGB to L*a*b* is applied, which shows the Atrophy region being clearly recognised by varying the values of the a-channel. Following is the output with the color range set as `[10, 10, 0] - [185, 146, 255]` (in order to discard the rest of the color regions of the image by bitwise-AND; the range is obtained by manual tweaking of the values):
 
 ![Atrophy region](atrophy.png)
 
-The last thing I need now is the optic disc class separated from the rest of the image. For this, a color-space conversion from RGB to HLS is made with the color range `[0, 115, 0] - [255, 255, 255]`, giving the following output:
+The last thing I need now is the optic disc class separated from the rest of the image. For this, a color-space conversion from RGB to HLS is made with the color range `[0, 115, 0] - [255, 255, 255]` follwed by a bitwise_AND, giving the following output:
 
 ![Optic region](optic.png)
 

@@ -28,7 +28,12 @@ The last thing I need now is the optic disc class separated from the rest of the
 
 ![Optic region](optic.png)
 
-The next step is to mask the above obtained results with the original image to achieve the overall effect. Following is the output of the masking:
+The next step is to mask the above obtained results with the original image to achieve the overall effect. But before that, one more thing to notice in the image is the reddish colored cross-shaped mark extending through the height of the image. In order to extract the mark, I used a RGB to HSV color conversion with the value range `[0,0,0]- [12, 240, 255]`:
+
+![Crossed mark](cross_mark.png)
+
+TO remove the effect of the crossing on the final output, I performed a bitwise-XOR of the above image with that of the original one.
+
 
 ![Final Masked Image](both.png)
 

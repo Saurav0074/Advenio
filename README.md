@@ -36,6 +36,9 @@ TO remove the effect of the crossing on the final output, I performed a bitwise-
 Finally, masking above three results with the original image gives the output:
 
 ![Final Masked Image](masking_result.png)
-
+ 
+ This image can now be passed as input to the watershed algorithm producing the result shown below:
+ 
+ ![Final Output](final_output.png)
 
  

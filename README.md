@@ -32,13 +32,22 @@ The next step is to mask the above obtained results with the original image to a
 
 ![Crossed mark](cross_mark.png)
 
-TO remove the effect of the crossing on the final output, I performed a bitwise-XOR of the above image with that of the original one.
+To remove the effect of the crossing on the final output, I performed a bitwise-XOR of the above image with that of the original one.
 Finally, masking above three results with the original image gives the output:
 
 ![Final Masked Image](masking_result.png)
  
- This image can now be passed as input to the watershed algorithm producing the result shown below:
+
+
+This image can now be passed as input to the watershed algorithm producing the result shown below:
  
  ![Final Output](final_output.png)
+ 
+ ### Observation
+ 
+ The final output shows much better results than that of the Naive approach but still has some cons:
+ - Some regions of the Atrophy class have been misclassified for the Optic Disk Class.
+ - The entire Atrophy class region has been classified into four distinct regions, however, the desired output should have only one.
+ - Few gaps between the Optic Disk and Atrophy region still have been misclassified as the Background region.
 
  

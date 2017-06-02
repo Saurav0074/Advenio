@@ -18,7 +18,8 @@ The output of applying a naive watershed algorithm to the image:
  
  The output observed clarifies the above point as no single contour falls solely within the Atrophy Class region. This indicates that the algorithm somehow can't classify the Atrophy class's pixel intensities, i.e. it treats them similar to the values of the neighboring background class. This led me to my final approach.
 
-### Final approach : Watershed along with color-space conversion
+### Final approach : Watershed along with color-space conversion 
+[colorSpace_with_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/colorSpace_with_watershed.py)
 
 Now, the foremost task is to detect the Atrophy class region. For this purpose, a color-space conversion of the orginial image from RGB to L*a*b* is applied, which shows the Atrophy region being clearly recognised by varying the values of the a-channel. Following is the output with the color range set as `[10, 10, 0] - [185, 146, 255]` (in order to discard the rest of the color regions of the image; the range is obtained by manual tweaking of the values):
 

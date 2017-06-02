@@ -11,6 +11,12 @@ The output of applying a naive watershed algorithm to the image:
  ![Naive Watershed result](output.png)
  
  The algorithm is okay with the optic disk (the sure foreground class) and background (the sure background) classes but fails to recognise the fainter atrophy class distinctly (which it should have recognised as an unknown region) and instead includes it in the sure background class.
+ 
+ Next, I went on to see the contours plotted by the above naive watershed algorithm in order to find the regions which were being considered distinct by the algorithm. 
+ 
+ ![Contours plotted by the naive watershed algorithm](finding_Contours.png)
+ 
+ The output observed clarifies the above point and 
 
 You can use the [editor on GitHub](https://github.com/Saurav0074/Advenio/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

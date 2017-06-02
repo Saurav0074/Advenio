@@ -33,9 +33,9 @@ The next step is to mask the above obtained results with the original image to a
 ![Crossed mark](cross_mark.png)
 
 TO remove the effect of the crossing on the final output, I performed a bitwise-XOR of the above image with that of the original one.
+Finally, masking above three results with the original image gives the output:
 
-
-![Final Masked Image](both.png)
+![Final Masked Image](masking_result.png)
 
 
  

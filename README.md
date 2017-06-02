@@ -20,8 +20,9 @@ The output of applying a naive watershed algorithm to the image:
 
 ### Final approach : Watershed along with color-space conversion
 
-Now the foremost task was to detect the Atrophy class region. For this purpose, I applied a color-space conversion of the orginial image from RGB to L*a*b*, and found out that the Atrophy region could be clearly recognised by varying the values of the a-channel. Following is the output with the color range set between `[10, 10, 0]` and `[185, 146, 255]` in order to discard the rest portions of the image ( the range was obtained by manual tweaking of the values):
+Now, the foremost task was to detect the Atrophy class region. For this purpose, I applied a color-space conversion of the orginial image from RGB to L*a*b*, and found out that the Atrophy region could be clearly recognised by varying the values of the a-channel. Following is the output with the color range set between `[10, 10, 0]` and `[185, 146, 255]` in order to discard the rest of the pixels of the image ( the range was obtained by manual tweaking of the values):
 
 ![Atrophy region](atrophy.png)
+
 
  

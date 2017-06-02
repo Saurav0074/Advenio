@@ -4,7 +4,7 @@ Firstly,  an initial look-up on the image made it clear that the Optic Disk clas
 
 ### A naive approach with the Watershed algorithm
 
-A second thought was the marker-based image segmentation using Watershed algorithm which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation. An additional benifit of this method is the identification of background, foreground as well as the unknown regions which can't be surely classified as either (this fits our case very closely).
+A second thought was the marker-based image segmentation using Watershed algorithm ([naive_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/naive_watershed.py))which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation. An additional benifit of this method is the identification of background, foreground as well as the unknown regions which can't be surely classified as either (this fits our case very closely).
 
 The output of applying a naive watershed algorithm to the image:
  
@@ -16,7 +16,7 @@ The output of applying a naive watershed algorithm to the image:
  
  ![Contours plotted by the naive watershed algorithm](finding_Contours.png)
  
- The output observed clarifies the above point and 
+ The output observed clarifies the above point as no single contour falls solely within the Atrophy Class region.
 
 You can use the [editor on GitHub](https://github.com/Saurav0074/Advenio/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

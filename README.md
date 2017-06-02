@@ -1,4 +1,9 @@
-## Welcome to GitHub Pages
+## Segmenting the given image into three different regions
+
+Firstly,  an initial look-up on the image made it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly.
+
+A second thought was the marker-based image segmentation using Watershed algorithm which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation.
+
 
 You can use the [editor on GitHub](https://github.com/Saurav0074/Advenio/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

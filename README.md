@@ -3,7 +3,7 @@
 Firstly,  an initial look-up on the image made it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly.
 
 ```markdown
-# A naive approach with the Watershed algorithm
+**A naive approach with the Watershed algorithm**
 ```
 A second thought was the marker-based image segmentation using Watershed algorithm which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation. An additional benifit of this method is the identification of background, foreground as well as the unknown regions which can't be surely classified as either (this fits our case very closely).
 

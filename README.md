@@ -47,8 +47,7 @@ This image can now be passed as input to the watershed algorithm producing the r
  ### Observation
  
  The final output shows much better results than that of the Naive approach but still has some cons:
- - Some regions of the Atrophy class have been misclassified for the Optic Disk Class.
- - The entire Atrophy class region has been classified into four distinct regions, however, the desired output should have only one.
+ - Some regions of the Atrophy class have been misclassified for the Optic Disk class thereby resulting in the separation of  Atrophy class region into four distinct regions.
  - Few gaps between the Optic Disk and Atrophy region still have been misclassified as the Background region.
 
  

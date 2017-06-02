@@ -16,40 +16,12 @@ The output of applying a naive watershed algorithm to the image:
  
  ![Contours plotted by the naive watershed algorithm](finding_Contours.png)
  
- The output observed clarifies the above point as no single contour falls solely within the Atrophy Class region.
+ The output observed clarifies the above point as no single contour falls solely within the Atrophy Class region. This indicates that the algorithm somehow can't classify the Atrophy class's pixel intensities, i.e. it treats them similar to the values of the neighboring background class. This led me to my final approach.
 
-You can use the [editor on GitHub](https://github.com/Saurav0074/Advenio/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Final approach : Watershed along with color-space conversion
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Now the foremost task was to detect the Atrophy class region. For this purpose, I applied a color-space conversion of the orginial image from RGB to L*a*b*, and found out that the Atrophy region could be clearly recognised by varying the values of the a-channel. Following is the output with the color range set between `[10, 10, 0]` and `[185, 146, 255]` in order to discard the rest portions of the image ( the range was obtained by manual tweaking of the values):
 
-### Markdown
+![Atrophy region](atrophy.png)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Saurav0074/Advenio/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+ 

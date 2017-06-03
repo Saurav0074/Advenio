@@ -90,7 +90,7 @@ Finally, masking above three results with the original image gives the output:
  
 
 
-This image can now be passed as input to the watershed algorithm producing the result shown below:
+This image can now be passed as input to the marker-based watershed algorithm as above, producing the result shown below:
  
  ![Final Output](best.png)
  

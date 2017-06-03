@@ -91,12 +91,12 @@ Finally, masking above three results with the original image gives the output:
 
 This image can now be passed as input to the watershed algorithm producing the result shown below:
  
- ![Final Output](final_output.png)
+ ![Final Output](best.png)
  
  ### Observation
  
  The final output shows much better results than that of the Naive approach but still has some cons:
- - Some regions of the Atrophy class have been misclassified for the Optic Disk class thereby resulting in the separation of  Atrophy class region into four distinct regions.
- - Few gaps between the Optic Disk and Atrophy region still have been misclassified as the Background region.
+ - Some regions of the Atrophy class have been misclassified as other distinct regions, however a large portion has been classified correctly.
+ - Few gaps between the Optic Disk and Atrophy region have been misclassified as different regions.
 
  

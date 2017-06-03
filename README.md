@@ -56,17 +56,17 @@ final_Result = img[markers == -1] = [255, 0, 0]
 
 - A second thought is the marker-based image segmentation using Watershed algorithm ([naive_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/naive_watershed.py)), which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation. An additional benifit of this method is the identification of background, foreground as well as the unknown regions which can't be surely classified as either (this fits our case very closely).
 
-The output of applying a naive watershed algorithm to the image:
+- The output of applying a naive watershed algorithm to the image:
  
  ![Naive Watershed result](output.png)
  
- The algorithm is okay with the optic disk (the sure foreground class) and background (the sure background) classes but fails to recognise the fainter atrophy class distinctly (which it should have recognised as an unknown region) and instead includes it in the sure-background class.
+ - The algorithm is okay with the optic disk (the sure foreground class) and background (the sure background) classes but fails to recognise the fainter atrophy class distinctly (which it should have recognised as an unknown region) and instead includes it in the sure-background class.
  
- Next, I went on to see the contours plotted by the above naive watershed algorithm ([finding_Contours.py](https://github.com/Saurav0074/Advenio/blob/master/finding_Contours.py)) in order to find the regions which were being considered distinct by the algorithm. 
+ - Next, I went on to see the contours plotted by the above naive watershed algorithm ([finding_Contours.py](https://github.com/Saurav0074/Advenio/blob/master/finding_Contours.py)) in order to find the regions which were being considered distinct by the algorithm. 
  
  ![Contours plotted by the naive watershed algorithm](finding_Contours.png)
  
- The output observed clarifies the above point as no single contour falls solely within the Atrophy Class region. This indicates that the algorithm somehow can't classify the Atrophy class's pixel intensities, i.e. it treats them similar to the values of the neighboring background class. This led me to my final approach.
+- The output observed clarifies the above point as no single contour falls solely within the Atrophy Class region. This indicates that the algorithm somehow can't classify the Atrophy class's pixel intensities, i.e. it treats them similar to the values of the neighboring background class. This led me to my final approach.
 
 ### Final approach : Watershed along with color-space conversion 
 [colorSpace_with_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/colorSpace_with_watershed.py)
@@ -75,22 +75,22 @@ The output of applying a naive watershed algorithm to the image:
 
 ![Atrophy region](atrophy.png)
 
-The last thing I need now is the optic disc class separated from the rest of the image. For this, a color-space conversion from RGB to HLS is made with the color range `[0, 115, 0] - [255, 255, 255]` follwed by a bitwise_AND, giving the following output:
+- The last thing I need now is the optic disc class separated from the rest of the image. For this, a color-space conversion from RGB to HLS is made with the color range `[0, 115, 0] - [255, 255, 255]` follwed by a bitwise_AND, giving the following output:
 
 ![Optic region](optic.png)
 
-The next step is to mask the above obtained results with the original image to achieve the overall effect. But before that, one more thing to notice in the image is the reddish colored cross-shaped mark extending through the height of the image. In order to extract the mark, I used a RGB to HSV color conversion with the value range `[0,0,0]- [12, 240, 255]`:
+- The next step is to mask the above obtained results with the original image to achieve the overall effect. But before that, one more thing to notice in the image is the reddish colored cross-shaped mark extending through the height of the image. In order to extract the mark, I used a RGB to HSV color conversion with the value range `[0,0,0]- [12, 240, 255]`:
 
 ![Crossed mark](cross_mark.png)
 
-To remove the effect of the crossing on the final output, I performed a bitwise-XOR of the above image with that of the original one.
-Finally, masking above three results with the original image gives the output:
+- To remove the effect of the crossing on the final output, I performed a bitwise-XOR of the above image with that of the original one.
+- Finally, masking above three results with the original image gives the output:
 
 ![Final Masked Image](masking_result.png)
  
 
 
-This image can now be passed as input to the marker-based watershed algorithm as above, producing the result shown below:
+- This image can now be passed as input to the marker-based watershed algorithm as above, producing the result shown below:
  
  ![Final Output](best.png)
  

@@ -1,5 +1,54 @@
 ## Segmenting the given image into three different regions
+Pseudocode:
+```markdown
+```
+img = readImage()
 
+// convert to Lab color space and apply proper threshold by tweaking the a-channel value to detect the Atrophy region
+img.color_Space_Convert(BGR to L*a*b*)
+th1 = apply_Threshold(img) 
+res = bitwise_AND(th1, img)
+
+// convert to HLS color space and apply proper threshold by tweaking the l-channel value to detect the Optic Disk region
+img.color_Space_Convert(BGR to HLS)
+th2 = apply_Threshold(img)
+res2 = bitwise_AND(th2, img)
+
+// convert to HSV color space and apply proper threshold by tweaking H and S-channel values to detect and remove the reddish colored crossing
+img.color_Space_Convert(BGR to HSV)
+th3 = apply_Threshold(img)
+res3 = bitwise_XOR(th3, img)
+
+// mask the original image with above three results
+result = apply_Mask(img, res, res2, res3)
+
+// apply marker-based watershed algorithm on resulting image
+img.color_Space_Convert(BGR to Gray)
+th = apply_Threshold(img)
+
+// apply Morphological closing to remove small holes
+noise_removed = MorphologyEx(th, MORPH_CLOSE)
+
+// dilate the resulting image to get the sure background area
+sure_bg = dilate(noise_removed)
+
+// apply distance transformation on noise_removed image to catch the sure foreground area
+dist_transform = apply_Distance_Transformation(noise_removed)
+sure_foreground = apply_Threshold(dist_transform)
+
+// subtract the sure foreground area from sure background area to get the unknown region
+unknown = sure_background - sure_foreground
+
+// apply connected Components labelling to label sure foreground with some positive integer, sure background with some other positive integer and unknown region with zero
+markers = applyConnectedComponentsLabelling(sure_foreground);
+markers = markers + 1;
+markers[unkown == 255] = 0
+
+// apply watershed to the labelled image to mark the boundary region with -1
+markers = apply_Watershed(img, markers)
+final_Result = img[markers == -1] = [255, 0, 0]
+```
+```
 Firstly,  an initial look-up on the image makes it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly.
 
 ### A naive approach with the Watershed algorithm

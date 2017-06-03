@@ -49,11 +49,12 @@ markers = apply_Watershed(img, markers)
 final_Result = img[markers == -1] = [255, 0, 0]
 ```
 
-Firstly,  an initial look-up on the image makes it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly. An another method would be to apply the grab-cut algorithm but since it would involve some manual touch-up to the image, I opted it out.
+- Firstly,  an initial look-up on the image makes it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly. 
+- An another method would be to apply the grab-cut algorithm but since it would involve some manual touch-up to the image, I opted it out.
 
 ### A simple approach with the Watershed algorithm
 
-A second thought is the marker-based image segmentation using Watershed algorithm ([naive_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/naive_watershed.py)), which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation. An additional benifit of this method is the identification of background, foreground as well as the unknown regions which can't be surely classified as either (this fits our case very closely).
+- A second thought is the marker-based image segmentation using Watershed algorithm ([naive_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/naive_watershed.py)), which is considered to be very useful in such cases because of its implicit assumption of the image surface being composed of peaks and valleys where high intensity denotes peaks and hills while low intensity denotes valleys; we start by filling water (color) in the valleys and making barriers in order to prevent the merging of peaks with valleys; these barriers eventually form the border-line of segmentation. An additional benifit of this method is the identification of background, foreground as well as the unknown regions which can't be surely classified as either (this fits our case very closely).
 
 The output of applying a naive watershed algorithm to the image:
  
@@ -70,7 +71,7 @@ The output of applying a naive watershed algorithm to the image:
 ### Final approach : Watershed along with color-space conversion 
 [colorSpace_with_watershed.py](https://github.com/Saurav0074/Advenio/blob/master/colorSpace_with_watershed.py)
 
-Now, the foremost task is to detect the Atrophy class region. For this purpose, a color-space conversion of the orginial image from RGB to L*a*b* is applied, which shows the Atrophy region being clearly recognised by varying the values of the a-channel. Following is the output with the color range set as `[10, 10, 0] - [185, 146, 255]` (in order to discard the rest of the color regions of the image by bitwise-AND; the range is obtained by manual tweaking of the values):
+- The foremost task now is to detect the Atrophy class region. For this purpose, a color-space conversion of the orginial image from RGB to L*a*b* is applied, which shows the Atrophy region being clearly recognised by varying the values of the a-channel. Following is the output with the color range set as `[10, 10, 0] - [185, 146, 255]` (in order to discard the rest of the color regions of the image by bitwise-AND; the range is obtained by manual tweaking of the values):
 
 ![Atrophy region](atrophy.png)
 

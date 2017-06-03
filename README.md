@@ -49,7 +49,7 @@ markers = apply_Watershed(img, markers)
 final_Result = img[markers == -1] = [255, 0, 0]
 ```
 
-Firstly,  an initial look-up on the image makes it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly.
+Firstly,  an initial look-up on the image makes it clear that the Optic Disk class, the atrophy class and the background class are all touching each other and hence, the traditional thresholding and contour detection methods would be unable to treat them distinctly. An another method would be to apply the grab-cut algorithm but since it would involve some manual touch-up to the image, I opted it out.
 
 ### A simple approach with the Watershed algorithm
 

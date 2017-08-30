@@ -102,4 +102,4 @@ final_Result = img[markers == -1] = [255, 0, 0]
  - Some regions of the Atrophy class have been segmented as other distinct regions, however a large portion has been segmented correctly.
  - Few gaps between the Optic Disk and Atrophy region also have been segmented as different ones.
 
- 
+ [Saurav Jha](www.linkedin.com/in/sauravonn)

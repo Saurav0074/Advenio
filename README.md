@@ -1,5 +1,5 @@
 ## Segmenting the given image into three different regions
-```Explanation.pptx``` contains the task that was assigned to me while applying for a Computer Vision Internship. 
+```Explanation.pptx``` contains the complete problem statement. 
 
 Pseudocode:
 
